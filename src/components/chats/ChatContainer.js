@@ -98,7 +98,7 @@ export default class ChatContainer extends Component {
                   <Messages
                     messages={activeChat.messages}
                     user={user}
-                    typingUser={activeChat.typingUser}
+                    typingUsers={activeChat.typingUsers}
                     />
                   <MessageInput
                     sendMessage={

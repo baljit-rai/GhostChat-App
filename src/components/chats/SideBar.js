@@ -33,7 +33,7 @@ export default class SideBar extends Component {
                 const user = chat.users.find(({name}) => {
                   return name !== this.props.name
                 }) || { name:"Community" }
-                const classNames = (activeChat && activeChat.id == chat.id) ? 'active' : ''
+                const classNames = (activeChat && activeChat.id === chat.id) ? 'active' : ''
 
                 return(
                   <div
