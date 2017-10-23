@@ -1,6 +1,7 @@
 const io = require('./index.js').io
 
-const { VERIFY_USER, USER_CONNECTED, USER_DISCONNECTED, LOGOUT, COMMUNITY_CHAT } = require('../Events')
+const { VERIFY_USER, USER_CONNECTED, USER_DISCONNECTED, LOGOUT,
+  COMMUNITY_CHAT, MESSAGE_RECIEVED, MESSAGE_SENT } = require('../Events')
 
 const { createUser, createMessage, createChat } = require('../Factories')
 
@@ -11,6 +12,7 @@ let communityChat = createChat()
 module.exports = function(socket) {
   console.log("Socket ID:" + socket.id)
 
+  let sendMessageToChatFromUser;
 
   // Verify Username.   ************ isUser is always returning false, fix this / ask for help **************
   socket.on(VERIFY_USER, (nickname, callback) => {
@@ -25,6 +27,8 @@ module.exports = function(socket) {
   socket.on(USER_CONNECTED, (user) => {
     connectedUsers = addUser(connectedUsers, user)
     socket.user = user
+
+    sendMessageToChatFromUser = sendMessageToChat(user.name)
 
     io.emit(USER_CONNECTED, connectedUsers)
 
@@ -52,8 +56,22 @@ module.exports = function(socket) {
     callback(communityChat)
 })
 
+  socket.on(MESSAGE_SENT, ({chatId, message})=>{
+    sendMessageToChatFromUser(chatId, message)
+  })
 
 }
+
+//**Returns a function that will take a chat id and message
+//and emit them to the chat id**
+function sendMessageToChat(sender){
+  return (chatId, message)=>{
+    io.emit(`${MESSAGE_RECIEVED}-${chatId}`, createMessage({message, sender}))
+  }
+
+}
+
+
 
 
 //**Adds user to list passed in.**
