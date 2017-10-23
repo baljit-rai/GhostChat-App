@@ -4,6 +4,7 @@ import {COMMUNITY_CHAT, MESSAGE_SENT, MESSAGE_RECIEVED, TYPING} from '../../Even
 import ChatHeading from './ChatHeading'
 import Messages from '../messages/Messages'
 import MessageInput from '../messages/MessageInput'
+
 export default class ChatContainer extends Component {
   constructor(props) {
     super(props);
@@ -78,6 +79,7 @@ export default class ChatContainer extends Component {
 
   render() {
     const { user, logout } = this.props
+    const { chats, activeChat } = this.state
       return (
        <div className="container">
          <SideBar
