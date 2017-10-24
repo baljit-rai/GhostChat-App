@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import SideBar from './SideBar'
-import {COMMUNITY_CHAT, MESSAGE_SENT, MESSAGE_RECIEVED, TYPING} from '../../Events'
+import {COMMUNITY_CHAT, MESSAGE_SENT, MESSAGE_RECIEVED, TYPING, PRIVATE_MESSAGE} from '../../Events'
 import ChatHeading from './ChatHeading'
 import Messages from '../messages/Messages'
 import MessageInput from '../messages/MessageInput'
+
 
 export default class ChatContainer extends Component {
   constructor(props) {
@@ -17,9 +18,22 @@ export default class ChatContainer extends Component {
 
   componentDidMount() {
     const { socket } = this.props
-    socket.emit(COMMUNITY_CHAT, this.resetChat)
+    this.initSocket(socket)
   }
 
+  initSocket(socket) {
+    const { user } = this.props
+    socket.emit(COMMUNITY_CHAT, this.resetChat)
+    socket.on(PRIVATE_MESSAGE, this.addChat)
+    socket.on( 'connect', () => {
+      socket.emit(COMMUNITY_CHAT, this.resetChat)
+    })
+  }
+
+  sendOpenPrivateMessage = (reciever) => {
+    const { socket, user } = this.props
+    socket.emit(PRIVATE_MESSAGE, {reciever, sender:user.name})
+  }
   //** Reset the chat back to only the chat passed in. **//
   resetChat = (chat) => {
     return this.addChat(chat, true)
@@ -28,7 +42,7 @@ export default class ChatContainer extends Component {
   //** Adds chat to the chat container, if reset is true removes all chats and sets that chat to the main chat. Sets the message and typing socket events for that chat. **//
   //** Adds a message to the specified chat **//
 
-  addChat = (chat, reset) => {
+  addChat = (chat, reset = false) => {
 
     const { socket } =this.props
     const { chats } = this.state
@@ -109,6 +123,7 @@ export default class ChatContainer extends Component {
            user={user}
            activeChat={activeChat}
            setActiveChat={this.setActiveChat}
+           onSendPrivateMessage={this.sendOpenPrivateMessage}
            />
         <div className="chat-room-container">
           {
