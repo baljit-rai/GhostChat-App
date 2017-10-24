@@ -22,5 +22,3 @@ function ShowProfileData(profiles) {
     console.log(companyName);
     //use information captured above
 }
-
-
