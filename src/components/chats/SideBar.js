@@ -17,6 +17,7 @@ export default class SideBar extends Component {
     const { onSendPrivateMessage } = this.props
 
     onSendPrivateMessage(reciever)
+    this.setState({reciever:""})
   }
 
 
@@ -58,7 +59,7 @@ export default class SideBar extends Component {
                   <div
                     key={chat.id}
                     className={`user ${classNames}`}
-                    onClick={ ()=> { setActiveChat(chat) } }
+                    onClick={ () => { setActiveChat(chat) } }
                     >
                     <div className="user-photo">{chatSideName[0].toUpperCase()}</div>
                     <div className="user-info">
