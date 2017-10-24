@@ -6,7 +6,7 @@ export default class Messages extends Component {
 
       this.scrollDown = this.scrollDown.bind(this)
   }
-
+  // SCROLL STOPS WORKING ONCE IT REACHES TOP
   scrollDown(){
     const { container } = this.refs
     container.scrollTop = container.scrollHeight
