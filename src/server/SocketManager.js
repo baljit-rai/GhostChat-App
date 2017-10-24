@@ -1,7 +1,8 @@
 const io = require('./index.js').io
 
 const { VERIFY_USER, USER_CONNECTED, USER_DISCONNECTED, LOGOUT,
-  COMMUNITY_CHAT, MESSAGE_RECIEVED, MESSAGE_SENT } = require('../Events')
+  COMMUNITY_CHAT, MESSAGE_RECIEVED, MESSAGE_SENT,
+  TYPING } = require('../Events')
 
 const { createUser, createMessage, createChat } = require('../Factories')
 
@@ -13,6 +14,8 @@ module.exports = function(socket) {
   console.log("Socket ID:" + socket.id)
 
   let sendMessageToChatFromUser;
+
+  let sendTypingFromUser;
 
   // Verify Username.   ************ isUser is always returning false, fix this / ask for help **************
   socket.on(VERIFY_USER, (nickname, callback) => {
@@ -29,6 +32,7 @@ module.exports = function(socket) {
     socket.user = user
 
     sendMessageToChatFromUser = sendMessageToChat(user.name)
+    sendTypingFromUser = sendTypingToChat(user.name)
 
     io.emit(USER_CONNECTED, connectedUsers)
 
@@ -60,6 +64,21 @@ module.exports = function(socket) {
     sendMessageToChatFromUser(chatId, message)
   })
 
+  socket.on(TYPING, ({chatId, isTyping})=>{
+    console.log(chatId, isTyping)
+    sendTypingFromUser(chatId, isTyping)
+
+  })
+
+}
+//**Returns a function that will take chatId and a boolean isTyping
+//**and emits broadcast to the chatId where sender is typing
+
+function sendTypingToChat(user){
+  return (chatId, isTyping)=>{
+    io.emit(`${TYPING}-${chatId}`, {user, isTyping})
+
+  }
 }
 
 //**Returns a function that will take a chat id and message

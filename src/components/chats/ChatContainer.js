@@ -35,11 +35,12 @@ export default class ChatContainer extends Component {
 
     const newChats = reset ? [chat] : [...chats, chat]
     this.setState({chats:newChats})
+    //this.setState({chats:newChats, activeChat:reset ? chat : this.state.activeChat})
 
     const messageEvent = `${MESSAGE_RECIEVED}-${chat.id}`
     const typingEvent = `${TYPING}-${chat.id}`
 
-    socket.on(typingEvent)
+    socket.on(typingEvent, this.updateTypingInChat(chat.id))
     socket.on(messageEvent, this.addMessageToChat(chat.id))
 
   }
@@ -60,7 +61,26 @@ export default class ChatContainer extends Component {
   }
 
   //** Updates the typing of chat with id passed in. **//
-  updateTypingInChat = (chatId) => {}
+  updateTypingInChat = (chatId) =>{
+    return ({isTyping, user})=>{
+      if(user !== this.props.user.name){
+
+        const { chats } = this.state
+
+        let newChats = chats.map((chat)=>{
+          if(chat.id === chatId){
+            if(isTyping && !chat.typingUsers.includes(user)){
+              chat.typingUsers.push(user)
+            }else if(!isTyping && chat.typingUsers.includes(user)){
+              chat.typingUsers = chat.typingUsers.filter(u => u !== user)
+            }
+          }
+          return chat
+        })
+        this.setState({chats:newChats})
+      }
+    }
+  }
 
   //** Adds a message to the specified chat. **//
   sendMessage = (chatId, message) => {
