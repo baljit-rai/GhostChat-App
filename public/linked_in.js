@@ -4,7 +4,10 @@ function OnLinkedInFrameworkLoad() {
 }
 //Reads user details using "me". Passes result to ShowProfileData
 function OnLinkedInAuth() {
-    IN.API.Profile("me").result(ShowProfileData);
+    IN.API.Profile("me")
+      .fields(["firstName", "positions:(company,title,summary,startDate,endDate,isCurrent)"])
+
+    .result(ShowProfileData);
 }
 //Recieves the profile's parameters and stores them
 function ShowProfileData(profiles) {
@@ -12,8 +15,12 @@ function ShowProfileData(profiles) {
     var id=member.id;
     var firstName=member.firstName;
     var lastName=member.lastName;
-    var photo=member.pictureUrl;
     var headline=member.headline;
+    var companyName=member.positions.values[0].company.name
 
+
+    console.log(companyName);
     //use information captured above
 }
+
+
