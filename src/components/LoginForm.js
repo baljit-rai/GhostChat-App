@@ -40,7 +40,7 @@ export default class LoginForm extends Component {
     const { nickname, error } = this.state
     return (
       <div className="login">
-        <form onSubmit={this.handleSubmit} className="login-form">
+        <form onSubmit={this.handleSubmit} className="login-form hide-login">
 
           <label htmlFor="nickname">
             <h2>Login</h2>

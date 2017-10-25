@@ -11,6 +11,8 @@ function OnLinkedInAuth() {
 }
 //Recieves the profile's parameters and stores them
 function ShowProfileData(profiles) {
+    var companyArray = ['Ghost Inc'];
+
     var member = profiles.values[0];
     var id=member.id;
     var firstName=member.firstName;
@@ -21,4 +23,12 @@ function ShowProfileData(profiles) {
 
     console.log(companyName);
     //use information captured above
+ if(companyArray.includes(companyName)){
+    $(function() {
+        console.log("HERRO DERE");
+        $('.login-form').removeClass('hide-login')
+    })
+    }
 }
+
+
