@@ -25,10 +25,9 @@ function ShowProfileData(profiles) {
     //use information captured above
  if(companyArray.includes(companyName)){
     $(function() {
-        console.log("HERRO DERE");
         $('.login-form').removeClass('hide-login')
     })
-    }
+ }
 }
 
 
