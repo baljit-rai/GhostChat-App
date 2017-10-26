@@ -1,49 +1,53 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="theme-color" content="#000000">
-    <script type="text/javascript" src="linked_in.js"> </script>
-    <script type="text/javascript" src="//platform.linkedin.com/in.js">
-      api_key:   77l34lfc12w9zp
-      onLoad:    OnLinkedInFrameworkLoad
-      authorize: true
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Ghost</title>
+    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/animate.css">
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="scripts/script.js"></script>
+    <script src="https://use.fontawesome.com/f8cc7b29cd.js"></script>
+    <script type="text/javascript" src="linked_in.js">
     </script>
-    <!--
-      manifest.json provides metadata used when your web app is added to the
-      homescreen on Android. See https://developers.google.com/web/fundamentals/engage-and-retain/web-app-manifest/
-    -->
+    <script type="text/javascript" src="http://platform.linkedin.com/in.js">
+    api_key: 77 l34lfc12w9zp
+    onLoad: OnLinkedInFrameworkLoad
+    authorize: true
+    </script>
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json">
     <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">
+</head>
 
-    <!--
-      Notice the use of %PUBLIC_URL% in the tags above.
-      It will be replaced with the URL of the `public` folder during the build.
-      Only files inside the `public` folder can be referenced from the HTML.
-
-      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
-      work correctly both with client-side routing and a non-root public URL.
-      Learn how to configure a non-root public URL by running `npm run build`.
-    -->
-    <title>Ghost App</title>
-  </head>
-  <body>
+<body>
     <script type="in/Login">
     </script>
-    <noscript>
-      You need to enable JavaScript to run this app.
-    </noscript>
-    <div id="root"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
+    <div id="container">
+      <script type="in/Login"></script>
+        <div id="login" class="login animated zoomIn">
+            <div class="logo animated zoomIn">
+                <img src="images/ghost.png" alt="logo">
+            </div>
+            <div id="username" class="input animated zoomIn">
+                <img src="images/icon.png" alt="username">
+                <input class="login_input" type="text" name="username" placeholder="Username">
+            </div>
+            <div id="password" class="input input2 animated zoomIn">
+                <img src="images/lock.png" alt="password">
+                <input class="login_input" type="password" name="username" placeholder="Password">
+            </div>
+            <button type="button" id="login_button" class="btn animated zoomIn">Sign in
+            </button>
+            <div id="loading" class="loading">
+                <div class="dot1"></div>
+                <div class="dot2"></div>
+            </div>
+            <div id="account" class="account animated zoomIn"><span>Don't have an account? <a id="signup" href="#">Sign up</a></span></div>
+        </div>
+    </div>
+</body>
 
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
-
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
-  </body>
 </html>

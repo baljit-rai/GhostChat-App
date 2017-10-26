@@ -6,7 +6,7 @@
     height: 100%;
     font-family: 'Lato', sans-serif;
     background-color: darkgrey;
-    /*background: linear-gradient(-45deg, #4b9ec1, #8c85d1, #23A6D5, #23D5AB);
+  /*  background: linear-gradient(-45deg, #4b9ec1, #8c85d1, #23A6D5, #23D5AB);
  background-size: 400% 400%;
  -webkit-animation: Gradient 15s ease infinite;
  -moz-animation: Gradient 15s ease infinite;
@@ -35,13 +35,8 @@
     margin: auto;
     margin-top: 2%;
     width: 25%;
-    min-width: 332px;
+    min-width: 460px;
     height: 92%;
-    /*box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.75);*/
-    /*background-image: url("../images/login_background.jpg");
-background-size: 100% 100%;
-background-repeat: no-repeat;
-background-position: center;*/
     animation-delay: 0.35s;
 }
 

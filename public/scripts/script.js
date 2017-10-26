@@ -37,12 +37,32 @@ $(function() {
     });
 
     $("#signup").click(function() {
-        $('.input').toggleClass('zoomIn zoomOut')
-        $('#login_button').toggleClass('zoomIn fadeOutUp')
+        $('.input').toggleClass('zoomIn zoomOut');
+        $('#login_button').toggleClass('zoomIn fadeOutUp');
+        $('#account').toggleClass('zoomIn fadeOutUp');
+            window.setTimeout(function() {
+                $('.input').remove();
+                $('#login_button').remove();
+                $('<script/>').attr('type', 'in/Login').appendTo('#container');
+                $('#account').remove();
+                $('#loading').remove();
+         }, 1600);
 
-        $('.input').remove();
-        $('button').remove();
-        $('#login').empty();
+            window.setTimeout(function() {
+                $('<div/>').attr('id','user').addClass('input animated zoomIn').appendTo('#login');
+                $('<div/>').attr('id', 'email').addClass('input input2 animated zoomIn').appendTo('#login');
+                $('<div/>').attr('id', 'password').addClass('input input2 animated zoomIn').appendTo('#login');
+                $('<div/>').attr('id', 'passconfirm').addClass('input input2 animated zoomIn').appendTo('#login');
+                $('<form/>').attr('id','username_form').appendTo('#user');
+                $('<form/>').attr('id','email_form').appendTo('#email');
+                $('<form/>').attr('id','password_form').appendTo('#password');
+                $('<form/>').attr('id','passconfirm_form').appendTo('#passconfirm');
+                $('img').attr('src','../images/icon.png').appendTo('#username_form');
+                $('img').attr('src','').appendTo('#password_form');
+                $('img').attr('src','').appendTo('#passconfirm_form');
 
+
+
+            }, 2600);
     });
 });
