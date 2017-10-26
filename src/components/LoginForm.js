@@ -46,12 +46,12 @@ export default class LoginForm extends Component {
             <h2>Login</h2>
           </label>
           <input
-          ref={(input) => { this.textInput = input }}
-          type="text"
-          id="nickname"
-          value= {nickname}
-          onChange={this.handleChange}
-          placeholder={'UserName'}
+            ref={(input) => { this.textInput = input }}
+            type="text"
+            id="nickname"
+            value= {nickname}
+            onChange={this.handleChange}
+            placeholder={'UserName'}
           />
           <div className="error">{error ? error:null}</div>
 
