@@ -40,6 +40,15 @@ export default class LoginForm extends Component {
     this.setState({error})
   }
 
+  signInClick() {
+    console.log('OMG THIS WORKS.WOOHOO!!');
+  }
+
+  signUpClick() {
+    console.log('wuzzz up bitches');
+  }
+
+
   render() {
     const { nickname, error } = this.state
     return (
@@ -63,15 +72,16 @@ export default class LoginForm extends Component {
               </form>
             </div>
 
-            <button type="button" id="login_button" className="btn animated zoomIn">Sign in
+            <button onClick={(event) => this.signInClick(event)} type="button" id="login_button" className="btn animated zoomIn">Sign in
             </button>
             <div id="loading" className="loading">
                 <div className="dot1"></div>
                 <div className="dot2"></div>
             </div>
-            <div id="account" className="account animated zoomIn"><span>Don't have an account? <a id="signup" href="#">Sign up</a></span></div>
+            <div id="account" className="account animated zoomIn"><span>Don't have an account? <a onClick={(e) => this.signUpClick(e)}id="signup" href="#">Sign up</a></span></div>
         </div>
     </div>
     );
   }
 }
+

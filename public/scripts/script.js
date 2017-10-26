@@ -36,7 +36,7 @@ $(function() {
         }, 5000);
     });
 
-    $("#signup").click(function() {
+    /*$("#signup").click(function() {
         $('.input').toggleClass('zoomIn zoomOut');
         $('#login_button').toggleClass('zoomIn fadeOutUp');
         $('#account').toggleClass('zoomIn fadeOutUp');
@@ -59,10 +59,6 @@ $(function() {
                 $('<form/>').attr('id','passconfirm_form').appendTo('#passconfirm');
                 $('img').attr('src',"/static/media/icon.7d1b9348.png").appendTo('#username_form');
                 $('img').attr('src',"/static/media/icon.7d1b9348.png").appendTo('#email_form');
-
-
-
-
             }, 2600);
-    });
+    });*/
 });
