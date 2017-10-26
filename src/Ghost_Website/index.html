@@ -10,6 +10,8 @@
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script type="text/javascript" src="scripts/script.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.6.0/firebase.js"></script>
+
 </head>
 
 <body>
@@ -18,11 +20,11 @@
             <div class="logo animated zoomIn">
                 <img src="images/ghost.png" alt="logo">
             </div>
-            <div class="input animated zoomIn">
+            <div class="input animated zoomIn" id="username">
                 <img src="images/icon.png" alt="username">
                 <input class="login_input" type="text" name="username" placeholder="Username">
             </div>
-            <div class="input input2 animated zoomIn">
+            <div class="input input2 animated zoomIn" id="password">
                 <img src="images/lock.png" alt="password">
                 <input class="login_input" type="password" name="username" placeholder="Password">
             </div>
@@ -35,6 +37,7 @@
             <div id="account" class="account animated zoomIn"><span>Don't have an account? <a href="#">Sign up</a></span></div>
         </div>
     </div>
+    <script src="app.js"></script>
 </body>
 
 </html>
