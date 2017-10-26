@@ -13,21 +13,35 @@ function OnLinkedInAuth() {
 function ShowProfileData(profiles) {
     var companyArray = ['Ghost Inc'];
 
-    var member = profiles.values[0];
-    var id=member.id;
-    var firstName=member.firstName;
-    var lastName=member.lastName;
-    var headline=member.headline;
-    var companyName=member.positions.values[0].company.name
-
+    var member;
+    var id;
+    var firstName;
+    var lastName;
+    var headline;
+    var companyName;
+    //Checks that returned values are not empty, if they are create them
+    if(profiles.values && profiles.values.length > 0){
+        member = profiles.values[0];
+        id=member.id;
+        firstName=member.firstName;
+        lastName=member.lastName;
+        headline=member.headline;
+        if(member.positions.values && member.positions.values.length > 0){
+        companyName=member.positions.values[0].company.name;
+         }
+    }
 
     console.log(companyName);
-    //use information captured above
+
  if(companyArray.includes(companyName)){
     $(function() {
         $('.login-form').removeClass('hide-login')
     })
- }
+    } else if(companyName === undefined){
+        alert('You are not part of a company on LinkedIn.')
+    } else {
+    companyArray += companyName;
+    console.log(companyArray + 'added!');
+    }
+
 }
-
-
