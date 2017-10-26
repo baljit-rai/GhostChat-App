@@ -11,8 +11,15 @@ export default class LoginForm extends Component {
 
     this.state = {
       nickname:"",
-      error:""
-
+      error:"",
+      class: {login: "login animated zoomIn",
+              logo: "logo animated zoomIn",
+              username: "input animated zoomIn",
+              password: "input input2 animated zoomIn",
+              button: "btn animated zoomIn",
+              loading: "loading",
+              account: "account animated zoomIn"},
+      visible: true
     };
   }
 
@@ -45,7 +52,7 @@ export default class LoginForm extends Component {
   }
 
   signUpClick() {
-    console.log('wuzzz up bitches');
+    this.setState({visible:false})
   }
 
 
@@ -53,35 +60,40 @@ export default class LoginForm extends Component {
     const { nickname, error } = this.state
     return (
       <div id="container">
-        <div id="login" className="login animated zoomIn">
-            <div className="logo animated zoomIn">
+        <div id="login" className={this.state.class.login}>
+            <div className={this.state.class.logo}>
                 <img src={ghost} />
             </div>
 
-            <div id="username" className="input animated zoomIn">
+            <div id="username" className={this.state.visible ? this.state.class.username : 'input animated zoomOut'}>
               <form>
                 <img src={icon} />
                 <input className="login_input" autoComplete="off" type="text" name="username" placeholder="Username" />
               </form>
             </div>
 
-            <div id="password" className="input input2 animated zoomIn">
+            <div id="password" className={this.state.visible ? this.state.class.password : 'input input2 animated zoomOut'}>
               <form>
                 <img src={lock} />
                 <input className="login_input" autoComplete="off" type="password" name="username" placeholder="Password" />
               </form>
             </div>
 
-            <button onClick={(event) => this.signInClick(event)} type="button" id="login_button" className="btn animated zoomIn">Sign in
+            <button onClick={(event) => this.signInClick(event)} type="button" id="login_button" className={this.state.visible ? this.state.class.button : 'btn animated zoomOut'}>Sign in
             </button>
-            <div id="loading" className="loading">
+            <div id="loading" className={this.state.class.loading}>
                 <div className="dot1"></div>
                 <div className="dot2"></div>
             </div>
-            <div id="account" className="account animated zoomIn"><span>Don't have an account? <a onClick={(e) => this.signUpClick(e)}id="signup" href="#">Sign up</a></span></div>
+            <div id="account" className={this.state.visible ? this.state.class.account : "account animated fadeOutDown"}><span>Don't have an account? <a onClick={(e) => this.signUpClick(e)}id="signup" href="#">Sign up</a></span></div>
         </div>
     </div>
     );
   }
 }
+
+
+
+
+
 
