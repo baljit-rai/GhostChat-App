@@ -57,9 +57,9 @@ $(function() {
                 $('<form/>').attr('id','email_form').appendTo('#email');
                 $('<form/>').attr('id','password_form').appendTo('#password');
                 $('<form/>').attr('id','passconfirm_form').appendTo('#passconfirm');
-                $('img').attr('src','../images/icon.png').appendTo('#username_form');
-                $('img').attr('src','').appendTo('#password_form');
-                $('img').attr('src','').appendTo('#passconfirm_form');
+                $('img').attr('src',"/static/media/icon.7d1b9348.png").appendTo('#username_form');
+                $('img').attr('src',"/static/media/icon.7d1b9348.png").appendTo('#email_form');
+
 
 
 
