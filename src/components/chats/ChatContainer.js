@@ -4,6 +4,18 @@ import {COMMUNITY_CHAT, MESSAGE_SENT, MESSAGE_RECIEVED, TYPING, PRIVATE_MESSAGE}
 import ChatHeading from './ChatHeading'
 import Messages from '../messages/Messages'
 import MessageInput from '../messages/MessageInput'
+import * as firebase from 'firebase';
+
+// Initialize Firebase
+var config = {
+  apiKey: "AIzaSyBtbI__aMb9rM6uCc78bL-EKlqK7SoIi7w",
+  authDomain: "ghostchat-app.firebaseapp.com",
+  databaseURL: "https://ghostchat-app.firebaseio.com",
+  projectId: "ghostchat-app",
+  storageBucket: "ghostchat-app.appspot.com",
+  messagingSenderId: "880360186807"
+};
+firebase.initializeApp(config);
 
 
 export default class ChatContainer extends Component {
@@ -19,6 +31,16 @@ export default class ChatContainer extends Component {
   componentDidMount() {
     const { socket } = this.props
     this.initSocket(socket)
+
+    const rootRef = firebase.database().ref().child('https://ghostchat-app.firebaseio.com/');
+    const chatsRef = rootRef.child('chats');
+    const activeChat = rootRef.child('activeChat')
+    chatsRef.on('value', snap => {
+      this.setState({
+        chats: snap.val(),
+        activeChat: snap.val()
+      });
+    });
   }
 
   initSocket(socket) {
