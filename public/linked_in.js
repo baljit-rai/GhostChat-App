@@ -19,7 +19,7 @@ function ShowProfileData(profiles) {
     var lastName;
     var headline;
     var companyName;
-
+    //Checks that returned values are not empty, if they are create them
     if(profiles.values && profiles.values.length > 0){
         member = profiles.values[0];
         id=member.id;
