@@ -52,35 +52,24 @@ export default class LoginForm extends Component {
   render() {
     const { nickname, error } = this.state
     return (
-      <div id="container">
-        <div id="login" className="login animated zoomIn">
-            <div className="logo animated zoomIn">
-                <img src={ghost} />
-            </div>
+      <div className="login">
+        <form onSubmit={this.handleSubmit} className="login-form" >
 
-            <div id="username" className="input animated zoomIn">
-              <form>
-                <img src={icon} />
-                <input className="login_input" autoComplete="off" type="text" name="username" placeholder="Username" />
-              </form>
-            </div>
+          <label htmlFor="nickname">
+            <h2>Got a nickname?</h2>
+          </label>
+          <input
+            ref={(input)=>{ this.textInput = input }}
+            type="text"
+            id="nickname"
+            value={nickname}
+            onChange={this.handleChange}
+            placeholder={'MYCoolUSername'}
+            />
+            <div className="error">{error ? error:null}</div>
 
-            <div id="password" className="input input2 animated zoomIn">
-              <form>
-                <img src={lock} />
-                <input className="login_input" autoComplete="off" type="password" name="username" placeholder="Password" />
-              </form>
-            </div>
-
-            <button onClick={(event) => this.signInClick(event)} type="button" id="login_button" className="btn animated zoomIn">Sign in
-            </button>
-            <div id="loading" className="loading">
-                <div className="dot1"></div>
-                <div className="dot2"></div>
-            </div>
-            <div id="account" className="account animated zoomIn"><span>Don't have an account? <a onClick={(e) => this.signUpClick(e)}id="signup" href="#">Sign up</a></span></div>
-        </div>
-    </div>
+        </form>
+      </div>
     );
   }
 }
