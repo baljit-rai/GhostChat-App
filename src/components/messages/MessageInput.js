@@ -2,14 +2,14 @@ import React, { Component } from 'react';
 import firebase from 'firebase/app'
 import 'firebase/database';
 
+
 export default class MessageInput extends Component {
 
   constructor(props){
     super(props);
-
     this.app = firebase.apps[0];
     this.database = this.app.database().ref().child('chats');
-
+    console.log()
     this.state = {
       message:"",
       isTyping:false
@@ -23,6 +23,7 @@ export default class MessageInput extends Component {
   }
 
   sendMessage = ()=>{
+    console.log(this.props)
     var updates = {};
     this.props.sendMessage(this.state.message)
     updates['/chats/' + this.state.message] = this.state.message
@@ -86,12 +87,6 @@ export default class MessageInput extends Component {
               }
             }
             />
-          <button
-            disabled = { message.length < 1 }
-            type = "submit"
-            className = "send"
-
-          > Send </button>
         </form>
 
 </div>
