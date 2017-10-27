@@ -23,7 +23,7 @@ export default class ChatContainer extends Component {
     if (!firebase.apps.length) {
     this.app = firebase.initializeApp(config);
 
-}
+    }
 
     this.app = firebase.apps[0];
     this.database = this.app.database().ref().child('chats');
@@ -38,19 +38,20 @@ export default class ChatContainer extends Component {
     const { socket } = this.props
     this.initSocket(socket)
 
+    let user = this.props.user.name;
     const chats = this.state.chats;
     //Data Snapshot
     this.database.on('child_added', snap => {
       chats.push({
         id: snap.key,
-        chats: snap.val().chats,
-        activeChat: snap.val().activeChat
+        user: snap.val().user
+        //activeChat: snap.val().activeChat
       })
       this.setState({
         chats: [...this.state.chats, ...chats]
       })
+      //console.log(chats);
     })
-    console.log(this.app)
   }
 
   componentDidMount() {
@@ -64,8 +65,9 @@ export default class ChatContainer extends Component {
       activeChat.messages = chatHistory.map((chatString, index) => {
         return { message: chatString, id: `${chatString}-${index}` }
       })
-
       this.setState({ activeChat });
+
+
     })
   }
 
@@ -185,7 +187,7 @@ export default class ChatContainer extends Component {
                     user={user}
                     typingUsers={activeChat.typingUsers}
                     />
-                  <MessageInput data={this.props}
+                  <MessageInput allData = { this.props }
                     sendMessage={
                       (message) => {
                           this.sendMessage(activeChat.id, message)

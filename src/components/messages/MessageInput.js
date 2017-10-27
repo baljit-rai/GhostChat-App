@@ -9,7 +9,9 @@ export default class MessageInput extends Component {
     super(props);
     this.app = firebase.apps[0];
     this.database = this.app.database().ref().child('chats');
-    console.log()
+    this.database2 = this.app.database().ref().child('private');
+
+
     this.state = {
       message:"",
       isTyping:false
@@ -23,10 +25,11 @@ export default class MessageInput extends Component {
   }
 
   sendMessage = ()=>{
-    console.log(this.props)
+    console.log(this.props);
     var updates = {};
     this.props.sendMessage(this.state.message)
-    updates['/chats/' + this.state.message] = this.state.message
+    //updates['/chats/' + this.state.message] = this.state.message
+    updates['/chats/' + this.props.allData.user.name] = this.state.message
     return this.app.database().ref().update(updates)
 
   }
@@ -79,7 +82,7 @@ export default class MessageInput extends Component {
             className = "form-control"
             value = { message }
             autoComplete = {'off'}
-            placeholder = "Type something interesting"
+            placeholder = "Enter a message"
             onKeyUp = { event => { event.keyCode !== 13 && this.sendTyping() } }
             onChange = {
               ({target})=>{

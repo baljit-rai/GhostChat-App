@@ -27,7 +27,7 @@ export default class SideBar extends Component {
     return (
       <div id="side-bar">
         <div className="heading">
-          <div className="app-name">Our Cool Chat <FAChevronDown /></div>
+          <div className="app-name"> Ghost <FAChevronDown /></div>
           <div className="menu">
             <FAMenu />
           </div>
@@ -52,7 +52,7 @@ export default class SideBar extends Component {
                 const lastMessage = chat.messages[chat.messages.length - 1];
                 const chatSideName = chat.users.find((name) => {
                   return name !== user.name
-                }) || "Community"
+                }) || "Company Chat"
                 const classNames = (activeChat && activeChat.id === chat.id) ? 'active' : ''
 
                 return(
