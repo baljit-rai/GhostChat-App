@@ -4,11 +4,29 @@ import {COMMUNITY_CHAT, MESSAGE_SENT, MESSAGE_RECIEVED, TYPING, PRIVATE_MESSAGE}
 import ChatHeading from './ChatHeading'
 import Messages from '../messages/Messages'
 import MessageInput from '../messages/MessageInput'
-
+import firebase from 'firebase/app'
+import 'firebase/database';
 
 export default class ChatContainer extends Component {
   constructor(props) {
     super(props);
+
+    var config = {
+    apiKey: "AIzaSyA1LeSMzIAdNE3WHeLi73zX4BEf1yp8PkU",
+    authDomain: "ghost-84d4d.firebaseapp.com",
+    databaseURL: "https://ghost-84d4d.firebaseio.com",
+    projectId: "ghost-84d4d",
+    storageBucket: "ghost-84d4d.appspot.com",
+    messagingSenderId: "473083667760"
+  };
+
+    if (!firebase.apps.length) {
+    this.app = firebase.initializeApp(config);
+
+}
+
+    this.app = firebase.apps[0];
+    this.database = this.app.database().ref().child('chats');
 
     this.state = {
       chats: [],
@@ -16,9 +34,39 @@ export default class ChatContainer extends Component {
     };
   }
 
-  componentDidMount() {
+  componentWillMount() {
     const { socket } = this.props
     this.initSocket(socket)
+
+    const chats = this.state.chats;
+    //Data Snapshot
+    this.database.on('child_added', snap => {
+      chats.push({
+        id: snap.key,
+        chats: snap.val().chats,
+        activeChat: snap.val().activeChat
+      })
+      this.setState({
+        chats: [...this.state.chats, ...chats]
+      })
+    })
+    console.log(this.app)
+  }
+
+  componentDidMount() {
+    const chatHistory = [];
+    this.database.once('value').then((data) => {
+      data.forEach((chat) => {
+        chatHistory.push(chat.val());
+      })
+
+      const activeChat = { messages: [], typingUsers: []};
+      activeChat.messages = chatHistory.map((chatString, index) => {
+        return { message: chatString, id: `${chatString}-${index}` }
+      })
+
+      this.setState({ activeChat });
+    })
   }
 
   initSocket(socket) {

@@ -1,15 +1,34 @@
 import React, { Component } from 'react';
+import firebase from 'firebase/app'
+import 'firebase/database';
 
 export default class MessageInput extends Component {
 
   constructor(props){
     super(props);
 
+/*    var config = {
+    apiKey: "AIzaSyA1LeSMzIAdNE3WHeLi73zX4BEf1yp8PkU",
+    authDomain: "ghost-84d4d.firebaseapp.com",
+    databaseURL: "https://ghost-84d4d.firebaseio.com",
+    projectId: "ghost-84d4d",
+    storageBucket: "ghost-84d4d.appspot.com",
+    messagingSenderId: "473083667760"
+    };
+
+    if (!firebase.apps.length) {
+    this.app = firebase.initializeApp(config);
+
+    }*/
+
+    this.app = firebase.apps[0];
+    this.database = this.app.database().ref().child('chats');
+
     this.state = {
       message:"",
       isTyping:false
     };
-  }
+}
 
   handleSubmit = (event)=>{
     event.preventDefault()
@@ -17,8 +36,19 @@ export default class MessageInput extends Component {
     this.setState({message:""})
   }
 
+
+
   sendMessage = ()=>{
+    //this.database.push().update(this.props.sendMessage(this.state.message))
+
+    //this.props.sendMessage(this.state.message)
+    var updates = {};
     this.props.sendMessage(this.state.message)
+    updates['/chats/' + this.state.message] = this.state.message
+    return this.app.database().ref().update(updates)
+
+
+
   }
 
   componentWillUnmount() {
