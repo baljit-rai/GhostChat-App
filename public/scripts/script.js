@@ -36,29 +36,23 @@ $(function() {
         }, 5000);
     });
 
-    /*$("#signup").click(function() {
-        $('.input').toggleClass('zoomIn zoomOut');
-        $('#login_button').toggleClass('zoomIn fadeOutUp');
-        $('#account').toggleClass('zoomIn fadeOutUp');
+    $("#signup").click(function() {
             window.setTimeout(function() {
                 $('.input').remove();
                 $('#login_button').remove();
-                $('<script/>').attr('type', 'in/Login').appendTo('#container');
                 $('#account').remove();
                 $('#loading').remove();
-         }, 1600);
+                $('<div/>').attr('id','username').addClass('input animated zoomIn').appendTo('#login');
+               $('<div/>').addClass('user_image').appendTo('#username');
+               $('<input/>').attr({type:'text',name:'email',placeholder:'Username'}).addClass('login_input_signup').appendTo('#username');
 
-            window.setTimeout(function() {
-                $('<div/>').attr('id','user').addClass('input animated zoomIn').appendTo('#login');
-                $('<div/>').attr('id', 'email').addClass('input input2 animated zoomIn').appendTo('#login');
-                $('<div/>').attr('id', 'password').addClass('input input2 animated zoomIn').appendTo('#login');
-                $('<div/>').attr('id', 'passconfirm').addClass('input input2 animated zoomIn').appendTo('#login');
-                $('<form/>').attr('id','username_form').appendTo('#user');
-                $('<form/>').attr('id','email_form').appendTo('#email');
-                $('<form/>').attr('id','password_form').appendTo('#password');
-                $('<form/>').attr('id','passconfirm_form').appendTo('#passconfirm');
-                $('img').attr('src',"/static/media/icon.7d1b9348.png").appendTo('#username_form');
-                $('img').attr('src',"/static/media/icon.7d1b9348.png").appendTo('#email_form');
-            }, 2600);
-    });*/
+               $('<div/>').attr('id','email').addClass('input animated zoomIn').appendTo('#login');
+               $('<div/>').addClass('email_image').appendTo('#email')
+               $('<input/>').attr({type:'text',name:'email',placeholder:'Email'}).addClass('login_input_signup').appendTo('#email');
+         }, 1400);
+
+
+
+
+    });
 });
