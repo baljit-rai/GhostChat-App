@@ -7,7 +7,6 @@ export default class MessageInput extends Component {
 
   constructor(props){
     super(props);
-
     this.app = firebase.apps[0];
     this.database = this.app.database().ref().child('chats');
     this.database2 = this.app.database().ref().child('private');
@@ -89,12 +88,6 @@ export default class MessageInput extends Component {
               }
             }
             />
-          <button
-            disabled = { message.length < 1 }
-            type = "submit"
-            className = "send"
-
-          > Send </button>
         </form>
 
 </div>

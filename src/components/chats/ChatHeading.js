@@ -15,9 +15,10 @@ export default function({name, numberOfUsers}) {
           </div>
         </div>
         <div className="options">
-          <FAVideo />
-          <FAUserPlus />
-          <MdEllipsisMenu />
+          <label className="switch">
+            <input type="checkbox" />
+            <span className="slider round"></span>
+</label>
         </div>
       </div>
 
