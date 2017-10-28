@@ -71,6 +71,8 @@ module.exports = function(socket) {
 
   })
 
+// **Private Messaging**
+
   socket.on(PRIVATE_MESSAGE, ({reciever, sender, activeChat}) => {
     if(reciever in connectedUsers) {
       const recieverSocket = connectedUsers[reciever].socketId

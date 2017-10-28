@@ -4,21 +4,57 @@ import {COMMUNITY_CHAT, MESSAGE_SENT, MESSAGE_RECIEVED, TYPING, PRIVATE_MESSAGE}
 import ChatHeading from './ChatHeading'
 import Messages from '../messages/Messages'
 import MessageInput from '../messages/MessageInput'
-
+import * as firebase from 'firebase';
 
 export default class ChatContainer extends Component {
   constructor(props) {
     super(props);
 
+    var config = {
+      apiKey: "AIzaSyA1LeSMzIAdNE3WHeLi73zX4BEf1yp8PkU",
+      authDomain: "ghost-84d4d.firebaseapp.com",
+      databaseURL: "https://ghost-84d4d.firebaseio.com",
+      projectId: "ghost-84d4d",
+      storageBucket: "ghost-84d4d.appspot.com",
+      messagingSenderId: "473083667760"
+  };
+    this.app = firebase.initializeApp(config);
+    this.database = this.app.database().ref().child('activeChat');
+    this.database = this.app.database().ref().child('chats');
+
+
     this.state = {
       chats: [],
-      activeChat: null
+      activeChat: null,
+      speed: 10
     };
   }
 
   componentDidMount() {
     const { socket } = this.props
     this.initSocket(socket)
+
+    const chats = this.state.chats;
+    const activeChat = this.state.activeChat;
+
+    this.database.on('child_added', snap =>{
+      activeChat.push({
+        chats: snap.val().chats
+
+      })
+    })
+    this.database.on('child_added', snap =>{
+      chats.push({
+        activeChat: snap.val().activeChat
+
+      })
+    })
+
+    this.setState({
+      chats: chats,
+      activeChat: activeChat
+    })
+
   }
 
   initSocket(socket) {
