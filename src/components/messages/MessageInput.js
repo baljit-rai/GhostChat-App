@@ -26,11 +26,9 @@ export default class MessageInput extends Component {
   }
 
   sendMessage = ()=>{
-    console.log(this.props);
     var updates = {};
     this.props.sendMessage(this.state.message)
-    //updates['/chats/' + this.state.message] = this.state.message
-    updates['/chats/' + this.props.allData.user.name] = this.state.message
+    updates['/chats/' + this.props.allData.user.name + '/' + new Date()] = this.state.message
     return this.app.database().ref().update(updates)
 
   }

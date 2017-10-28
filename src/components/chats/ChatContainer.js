@@ -33,43 +33,45 @@ export default class ChatContainer extends Component {
       activeChat: null
     };
   }
-
+  //Takes a snapshot of firebase database and pushes into chats
   componentWillMount() {
     const { socket } = this.props
     this.initSocket(socket)
 
-    let user = this.props.user.name;
     const chats = this.state.chats;
     //Data Snapshot
     this.database.on('child_added', snap => {
       chats.push({
         id: snap.key,
         user: snap.val().user
-        //activeChat: snap.val().activeChat
       })
       this.setState({
         chats: [...this.state.chats, ...chats]
       })
-      //console.log(chats);
     })
   }
-
+  //for each chat in activeChats, display it with the date key, sorted
   componentDidMount() {
-    const chatHistory = [];
+    const activeChat = { messages: [], typingUsers: []};
+
     this.database.once('value').then((data) => {
-      data.forEach((chat) => {
-        chatHistory.push(chat.val());
-      })
+      data.forEach((userChat) => {
+        const userChatObj = userChat.val();
 
-      const activeChat = { messages: [], typingUsers: []};
-      activeChat.messages = chatHistory.map((chatString, index) => {
-        return { message: chatString, id: `${chatString}-${index}` }
+        Object.keys(userChatObj).forEach((dateKey) => {
+          activeChat.messages.push({
+            message: userChatObj[dateKey],
+            id: dateKey,
+            time: dateKey,
+            sender: userChat.key
+          });
+        })
       })
-      this.setState({ activeChat });
-
+      this.sortChats(activeChat);
 
     })
   }
+
 
   initSocket(socket) {
     const { user } = this.props
@@ -85,10 +87,28 @@ export default class ChatContainer extends Component {
     const { activeChat } = this.state
     socket.emit(PRIVATE_MESSAGE, {reciever, sender:user.name, activeChat})
   }
+
   //** Reset the chat back to only the chat passed in. **//
   resetChat = (chat) => {
     return this.addChat(chat, true)
   }
+
+  //Sort chats in history by time
+  sortChats = (activeChat) => {
+      const shortDate = new Date();
+      shortDate.toLocaleString().replace(',','');
+
+      const sortedActiveChat = activeChat;
+
+      sortedActiveChat.messages.sort((a, b) =>
+        (
+          (new Date(a.time) >  new Date(b.time))
+          ? 1
+          : -1
+        )
+      )
+      this.setState({ activeChat: sortedActiveChat})
+    }
 
   //** Adds chat to the chat container, if reset is true removes all chats and sets that chat to the main chat. Sets the message and typing socket events for that chat. **//
   //** Adds a message to the specified chat **//
