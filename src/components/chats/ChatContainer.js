@@ -189,7 +189,7 @@ export default class ChatContainer extends Component {
     const { user, logout } = this.props
     const { chats, activeChat } = this.state
       return (
-       <div className="container">
+       <div className="container">d
          <SideBar
            logout={logout}
            chats={chats}
@@ -198,7 +198,7 @@ export default class ChatContainer extends Component {
            setActiveChat={this.setActiveChat}
            onSendPrivateMessage={this.sendOpenPrivateMessage}
            />
-        <div className="chat-room-container">
+        <div className="chat-room-container duration zoomIn">
           {
             activeChat !== null ? (
 

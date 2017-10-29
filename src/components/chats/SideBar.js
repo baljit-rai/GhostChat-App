@@ -25,7 +25,7 @@ export default class SideBar extends Component {
     const { chats, activeChat, user, setActiveChat, logout } = this.props
     const { reciever } = this.state
     return (
-      <div id="side-bar">
+      <div id="side-bar" className="duration zoomIn">
         <div className="heading">
           <div className="app-name"> Ghost <FAChevronDown /></div>
           <div className="menu">

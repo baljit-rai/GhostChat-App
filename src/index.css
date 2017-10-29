@@ -5,9 +5,9 @@ body,
     padding: 0;
     font-family: sans-serif;
     height: 100%;
-    /*background: linear-gradient(-45deg, #4b9ec1, #8c85d1, #23A6D5, #23D5AB);
+    background: linear-gradient(-45deg, #4b9ec1, #8c85d1, #23A6D5, #23D5AB);
     background-size: 400% 400%;
-    animation: Gradient 15s ease infinite;*/
+    animation: Gradient 15s ease infinite;
 }
 
 @keyframes Gradient {
@@ -22,6 +22,14 @@ body,
     100% {
         background-position: 0% 50%
     }
+}
+
+.duration {
+    animation-duration: 1.5s;
+}
+
+.opacity {
+    opacity:0.7;
 }
 
 input,
@@ -171,7 +179,7 @@ textarea {
     transition-duration: 1.1s;
     overflow-y: scroll;
     background: #ffffff;
-    flex-grow: 1
+    flex-grow: 1;
 }
 
 #side-bar .users::-webkit-scrollbar-track {
@@ -294,6 +302,7 @@ textarea {
     box-shadow: 0px 0px 73px -9px rgba(0, 0, 0, 0.5);
     border-radius: 0px 20px 20px 0px;
     z-index: 1;
+
 }
 
 @media screen and (max-width: 510px) {
