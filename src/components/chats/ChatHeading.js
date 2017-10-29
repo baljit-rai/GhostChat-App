@@ -32,6 +32,7 @@ export default function({name, numberOfUsers}) {
       elem8.classList.remove('footer')
 
 
+
     } else {
       elem.classList.add('ghost');
       elem2.classList.add('searchColor')
@@ -41,6 +42,7 @@ export default function({name, numberOfUsers}) {
       elem6.classList.add('header')
       elem7.classList.add('thread-body')
       elem8.classList.add('footer')
+
     }
   }
 

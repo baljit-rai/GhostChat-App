@@ -337,7 +337,7 @@ textarea {
 }
 
 .thread-container::-webkit-scrollbar-thumb {
-    background-color: #272a30;
+    background-color: #afafaf;
 }
 
 .thread-container .thread {
@@ -593,6 +593,11 @@ input:checked + .slider:before {
     background-color: #303540;
 }
 
+#side-bar .user.activeColor {
+    transition-duration: 0.9s;
+    background-color: #303540;
+}
+
 #side-bar .current {
     transition-duration: 1.3s;
     background-color: #303540;
@@ -611,5 +616,9 @@ input:checked + .slider:before {
 .footer {
     transition-duration: 1.1s;
     background-color: #303540;
+}
+
+.scroll {
+    background-color: black;
 }
 
