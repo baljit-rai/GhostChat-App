@@ -26,13 +26,13 @@ export default class SideBar extends Component {
     const { reciever } = this.state
     return (
       <div id="side-bar" className="duration zoomIn">
-        <div className="heading">
+        <div className="heading animated fadeInLeft">
           <div className="app-name"> Ghost <FAChevronDown /></div>
           <div className="menu">
             <FAMenu />
           </div>
         </div>
-        <form onSubmit={this.handleSubmit} className="search">
+        <form onSubmit={this.handleSubmit} className="search animated fadeInLeft">
 
           <i className="search-icon"><FASearch /></i>
           <input className="search_input"
@@ -59,7 +59,7 @@ export default class SideBar extends Component {
                 return(
                   <div
                     key={chat.id}
-                    className={`user ${classNames}`}
+                    className={`animated fadeInLeft user ${classNames}` }
                     onClick={ () => { setActiveChat(chat) } }
                     >
                     <div className="user-photo">{chatSideName[0].toUpperCase()}</div>
@@ -76,7 +76,7 @@ export default class SideBar extends Component {
             })
           }
       </div>
-      <div className="current-user">
+      <div className="current-user animated fadeInLeft">
         <span>{user.name}</span>
         <div onClick={()=>{logout()}} title="Logout" className="logout">
           <MdEject/>

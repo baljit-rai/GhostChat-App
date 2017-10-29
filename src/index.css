@@ -5,9 +5,9 @@ body,
     padding: 0;
     font-family: sans-serif;
     height: 100%;
-    background: linear-gradient(-45deg, #4b9ec1, #8c85d1, #23A6D5, #23D5AB);
+    /*background: linear-gradient(-45deg, #4b9ec1, #8c85d1, #23A6D5, #23D5AB);
     background-size: 400% 400%;
-    animation: Gradient 15s ease infinite;
+    animation: Gradient 15s ease infinite;*/
 }
 
 @keyframes Gradient {
@@ -109,6 +109,7 @@ textarea {
     transition-duration: 0.5s;
     background: #5498C1;
     border-radius: 20px 0px 0px 0px;
+    animation-delay: 0.2s;
 }
 
 #side-bar .search {
@@ -122,7 +123,8 @@ textarea {
     padding-left: 15px;
     padding-right: 20px;
     height: 10vh;
-    max-height: 65px
+    max-height: 65px;
+    animation-delay: 0.5s;
 }
 
 #side-bar .search .search-icon {
@@ -202,7 +204,8 @@ textarea {
     display: flex;
     height: 66px;
     justify-content: flex-start;
-    padding: 18px 16px
+    padding: 18px 16px;
+    animation-delay: 0.7s;
 }
 
 #side-bar .users .user.active,
@@ -245,6 +248,7 @@ textarea {
     padding-right: 16px;
     border-radius: 0px 0px 0px 20px;
     transition-duration: 1.3s;
+    animation-delay: 0.7s;
 }
 
 #side-bar .current-user .logout {
@@ -485,6 +489,7 @@ textarea {
     width: 80%;
     height: 60%;
     border: none;
+    animation-delay: 0.3s;
 }
 
 .message-input .message-form .form-control::-webkit-scrollbar-track {

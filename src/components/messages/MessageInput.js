@@ -77,7 +77,7 @@ export default class MessageInput extends Component {
             id = "message"
             ref = {"messageinput"}
             type = "text"
-            className = "form-control"
+            className = "form-control animated zoomIn"
             value = { message }
             autoComplete = {'off'}
             placeholder = "Enter a message"
