@@ -33,13 +33,14 @@ export default class SideBar extends Component {
           </div>
         </div>
         <form onSubmit={this.handleSubmit} className="search">
+
           <i className="search-icon"><FASearch /></i>
-          <input
+          <input className="search_input"
             placeholder="Search"
             type="text"
             value={reciever}
             onChange={(event) => { this.setState({reciever:event.target.value}) }}/>
-          <div className="plus"></div>
+
         </form>
         <div
           className="users"

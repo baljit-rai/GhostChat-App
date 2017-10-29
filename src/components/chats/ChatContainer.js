@@ -163,6 +163,8 @@ export default class ChatContainer extends Component {
     this.setState({activeChat})
   }
 
+
+
   render() {
     const { user, logout } = this.props
     const { chats, activeChat } = this.state
