@@ -47,7 +47,6 @@ export default class MessageInput extends Component {
 
   //Start an interval to check if user is typing
   startCheckingTyping = ()=>{
-    console.log("Typing...");
     this.typingInterval = setInterval(()=>{
       if((Date.now() - this.lastUpdateTime) > 300){
         this.setState({isTyping:false})
@@ -58,7 +57,6 @@ export default class MessageInput extends Component {
 
  //Clear interval if user is not typing
   stopCheckingTyping = ()=>{
-    console.log("Stopped typing.")
     if(this.typingInterval){
       clearInterval(this.typingInterval)
       this.props.sendTyping(false)

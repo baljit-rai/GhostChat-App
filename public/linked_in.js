@@ -31,17 +31,13 @@ function ShowProfileData(profiles) {
          }
     }
 
-    console.log(companyName);
-
  if(companyArray.includes(companyName)){
     $(function() {
         $('.login-form').removeClass('hide-login')
-    })
+     })
     } else if(companyName === undefined){
         alert('You are not part of a company on LinkedIn.')
     } else {
-    companyArray += companyName;
-    console.log(companyArray + 'added!');
-    }
-
-}
+      companyArray += companyName;
+      }
+ }
