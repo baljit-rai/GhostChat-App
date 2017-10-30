@@ -33,11 +33,15 @@
     -->
 
     <title>Ghost App</title>
+
+
   </head>
   <body>
     <!-- <script type="in/Login"> -->
     </script>
+    <div class="linkedin">
     <script type="In/Login"></script>
+    </div>
     <noscript>
       You need to enable JavaScript to run this app.
     </noscript>
@@ -52,5 +56,18 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
+    <!-- <script src="fire.js"></script> -->
+    <script type="text/javascript">
+function downloadJSAtOnload() {
+var element = document.createElement("script");
+element.src = "fire.js";
+document.body.appendChild(element);
+}
+if (window.addEventListener)
+window.addEventListener("load", downloadJSAtOnload, false);
+else if (window.attachEvent)
+window.attachEvent("onload", downloadJSAtOnload);
+else window.onload = downloadJSAtOnload;
+</script>
   </body>
 </html>
