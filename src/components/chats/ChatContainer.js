@@ -182,6 +182,8 @@ export default class ChatContainer extends Component {
     this.setState({activeChat})
   }
 
+
+
   render() {
     const { user, logout } = this.props
     const { chats, activeChat } = this.state
@@ -195,7 +197,7 @@ export default class ChatContainer extends Component {
            setActiveChat={this.setActiveChat}
            onSendPrivateMessage={this.sendOpenPrivateMessage}
            />
-        <div className="chat-room-container">
+        <div className="chat-room-container duration zoomIn">
           {
             activeChat !== null ? (
 
