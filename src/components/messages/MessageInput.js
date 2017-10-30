@@ -18,7 +18,7 @@ export default class MessageInput extends Component {
   }
 
   handleSubmit = (event)=>{
-    event.preventDefault()
+    event.defaultPrevented();
     this.sendMessage()
     this.setState({message:""})
   }

@@ -12,7 +12,7 @@ export default class SideBar extends Component {
     }
   }
   handleSubmit = (event) => {
-    event.preventDefault()
+    event.defaultPrevented();
     const { reciever } = this.state
     const { onSendPrivateMessage } = this.props
 
