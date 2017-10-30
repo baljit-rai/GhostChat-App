@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import firebase from 'firebase/app'
 import 'firebase/database';
 
-
 export default class MessageInput extends Component {
 
   constructor(props){
@@ -16,7 +15,7 @@ export default class MessageInput extends Component {
       message:"",
       isTyping:false
     };
-}
+  }
 
   handleSubmit = (event)=>{
     event.preventDefault()
@@ -26,6 +25,7 @@ export default class MessageInput extends Component {
 
   sendMessage = ()=>{
     var updates = {};
+
     this.props.sendMessage(this.state.message)
     updates['/chats/' + this.props.allData.user.name + '/' + new Date()] = this.state.message
     return this.app.database().ref().update(updates)
@@ -54,7 +54,7 @@ export default class MessageInput extends Component {
         this.stopCheckingTyping()
       }
     }, 300)
-}
+  }
 
  //Clear interval if user is not typing
   stopCheckingTyping = ()=>{
