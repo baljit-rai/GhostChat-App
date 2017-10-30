@@ -30,32 +30,32 @@ export default class ChatContainer extends Component {
     };
   }
 
-  componentDidMount() {
-    const { socket } = this.props
-    this.initSocket(socket)
+  // componentDidMount() {
+  //   const { socket } = this.props
+  //   this.initSocket(socket)
 
-    const chats = this.state.chats;
-    const activeChat = this.state.activeChat;
+  //   const chats = this.state.chats;
+  //   const activeChat = this.state.activeChat;
 
-    this.database.on('child_added', snap =>{
-      activeChat.push({
-        chats: snap.val().chats
+  //   this.database.on('child_added', snap =>{
+  //     activeChat.push({
+  //       chats: snap.val().chats
 
-      })
-    })
-    this.database.on('child_added', snap =>{
-      chats.push({
-        activeChat: snap.val().activeChat
+  //     })
+  //   })
+  //   this.database.on('child_added', snap =>{
+  //     chats.push({
+  //       activeChat: snap.val().activeChat
 
-      })
-    })
+  //     })
+  //   })
 
-    this.setState({
-      chats: chats,
-      activeChat: activeChat
-    })
+  //   this.setState({
+  //     chats: chats,
+  //     activeChat: activeChat
+  //   })
 
-  }
+  // }
 
   initSocket(socket) {
     const { user } = this.props
