@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import firebase from 'firebase/app'
+import firebase from 'firebase/app';
 import 'firebase/database';
 
 export default class MessageInput extends Component {
@@ -8,8 +8,6 @@ export default class MessageInput extends Component {
     super(props);
     this.app = firebase.apps[0];
     this.database = this.app.database().ref().child('chats');
-    this.database2 = this.app.database().ref().child('private');
-
 
     this.state = {
       message:"",
@@ -22,14 +20,13 @@ export default class MessageInput extends Component {
     this.sendMessage()
     this.setState({message:""})
   }
-
+  //Sends message to server as well as firebase database
   sendMessage = ()=>{
     var updates = {};
 
     this.props.sendMessage(this.state.message)
     updates['/chats/' + this.props.allData.user.name + '/' + new Date()] = this.state.message
     return this.app.database().ref().update(updates)
-
   }
 
   componentWillUnmount() {
