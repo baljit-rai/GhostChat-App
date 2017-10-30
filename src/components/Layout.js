@@ -58,7 +58,7 @@ export default class Layout extends Component {
       <div className="container">
         {
           !user ?
-          <LoginForm socket={socket} setUser={this.setUser} />
+          <LoginForm socket={socket} setUser={this.setUser}/>
           :
           <ChatContainer socket={socket} user={user} logout={this.logout}/>
         }

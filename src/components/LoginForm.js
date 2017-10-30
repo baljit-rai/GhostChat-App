@@ -41,11 +41,11 @@ export default class LoginForm extends Component {
   }
 
   signInClick() {
-    console.log('OMG THIS WORKS.WOOHOO!!');
+    console.log('Signed In');
   }
 
   signUpClick() {
-    console.log('wuzzz up bitches');
+    console.log('Signed Up');
   }
 
 

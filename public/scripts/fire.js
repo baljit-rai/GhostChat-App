@@ -45,12 +45,19 @@
     promise.catch(event => console.log(event.message));
   });
 
+  // Add logout event
+  btnLogout.addEventListener('click', event => {
+    firebase.auth().signOut();
+  })
+
   //Add a realtime listner
   firebase.auth().onAuthStateChanged(firebaseUser => {
     if(firebaseUser) {
       console.log(firebaseUser);
+      btnLogout.classList.remove('hide');
     } else {
       console.log('not logged in')
+      btnLogout.classList.add('hide');
     }
 
   });
