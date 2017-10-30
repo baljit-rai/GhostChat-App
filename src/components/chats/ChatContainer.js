@@ -22,7 +22,6 @@ export default class ChatContainer extends Component {
 
     if (!firebase.apps.length) {
     this.app = firebase.initializeApp(config);
-
     }
 
     this.app = firebase.apps[0];
@@ -52,7 +51,7 @@ export default class ChatContainer extends Component {
   }
   //for each chat in activeChats, display it with the date key, sorted
   componentDidMount() {
-    const activeChat = { messages: [], typingUsers: []};
+    const activeChat = { messages: [], typingUsers: [] };
 
     this.database.once('value').then((data) => {
       data.forEach((userChat) => {
@@ -66,12 +65,11 @@ export default class ChatContainer extends Component {
             sender: userChat.key
           });
         })
+
       })
       this.sortChats(activeChat);
-
     })
   }
-
 
   initSocket(socket) {
     const { user } = this.props
@@ -95,21 +93,24 @@ export default class ChatContainer extends Component {
 
   //Sort chats in history by time
   sortChats = (activeChat) => {
-      const shortDate = new Date();
-      shortDate.toLocaleString().replace(',','');
-
-      const sortedActiveChat = activeChat;
-
-      sortedActiveChat.messages.sort((a, b) =>
-        (
-          (new Date(a.time) >  new Date(b.time))
-          ? 1
-          : -1
-        )
+    const sortedActiveChat = activeChat;
+    sortedActiveChat.messages.sort((a, b) =>
+      (
+        (a.time >  b.time)
+        ? 1
+        : -1
       )
-      this.setState({ activeChat: sortedActiveChat})
+    )
+    let arr = Object.keys(sortedActiveChat.messages);
+
+    for(let index = 0; index < arr.length; index++) {
+
+     let shortDate = sortedActiveChat.messages[index].time.substring(0, 25);
+     sortedActiveChat.messages[index].time = shortDate;
     }
 
+  this.setState({ activeChat: sortedActiveChat })
+}
   //** Adds chat to the chat container, if reset is true removes all chats and sets that chat to the main chat. Sets the message and typing socket events for that chat. **//
   //** Adds a message to the specified chat **//
 
@@ -139,10 +140,8 @@ export default class ChatContainer extends Component {
           chat.messages.push(message)
         return chat
       })
-
       this.setState({chats:newChats})
     }
-
   }
 
   //** Updates the typing of chat with id passed in. **//
