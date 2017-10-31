@@ -36,9 +36,6 @@ export default class LoginForm extends Component {
   handleSubmit = (event) => {
     event.preventDefault();
 
-
-
-
  const txtEmail = document.getElementById('txtEmail')
  const txtPassword = document.getElementById('txtPassword')
  const txtPasswordConfirm = document.getElementById('txtPasswordConfirm')
@@ -50,7 +47,6 @@ export default class LoginForm extends Component {
    //Get email and password
    const email = txtEmail.value;
    const password = txtPassword.value;
-   /*const confirm = txtPasswordConfirm.value;*/
    const auth = firebase.auth();
 
    //Sign In
@@ -58,26 +54,27 @@ export default class LoginForm extends Component {
    promise.catch(event => console.log(event.message));
  });
 
- // Add signup event
+/* // Add signup event
  btnSignUp.addEventListener('click', event => {
    console.log('click');
    // Get email and password
    // TODO: Check 4 real email
-   const email = txtEmail.value
+   const email = txtEmail.value;
    const password = txtPassword.value;
+   const confirm = txtPasswordConfirm.value;
    const auth = firebase.auth();
 
    //Sign Up
    const promise = auth.createUserWithEmailAndPassword(email, password);
    promise.catch(event => console.log(event.message));
- });
+ });*/
 
 
  firebase.auth().onAuthStateChanged(firebaseUser => {
    if(firebaseUser) {
     const { socket } = this.props
     const { nickname } = this.state
-      socket.emit(VERIFY_USER, nickname, this.setUser)
+    socket.emit(VERIFY_USER, nickname, this.setUser)
    } else {
      console.log('not logged in')
    }
@@ -100,6 +97,29 @@ export default class LoginForm extends Component {
 
   signUpClick() {
     this.setState({visible:false})
+
+   /*const txtEmail = document.getElementById('txtEmail')
+   const txtPassword = document.getElementById('txtPassword')
+   const txtPasswordConfirm = document.getElementById('txtPasswordConfirm')
+   const btnLogin = document.getElementById('btnLogin')
+   const btnSignUp = document.getElementById('btnSignUp')
+   const btnLogout= document.getElementById('btnLogout')
+
+   setTimeout(() => {
+   btnSignUp.addEventListener('click', event => {
+     // Get email and password
+     const email = txtEmail.value;
+     const password = txtPassword.value;
+     const confirm = txtPasswordConfirm.value;
+     const auth = firebase.auth();
+
+     //Sign Up
+     const promise = auth.createUserWithEmailAndPassword(email, password);
+     promise.catch(event => console.log(event.message));
+      }, 2000);
+
+  });*/
+
   }
 
   render() {

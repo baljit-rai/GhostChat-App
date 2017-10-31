@@ -30,14 +30,33 @@ function ShowProfileData(profiles) {
         companyName=member.positions.values[0].company.name;
          }
     }
-
  if(companyArray.includes(companyName)){
     $(function() {
         $('.login-form').removeClass('hide-login')
+        $("<div/>").attr('id', 'email').addClass('input animated zoomIn').appendTo('#login');
+        $("<div/>").attr('id', 'password').addClass('input animated zoomIn').appendTo('#login');
+        $("<div/>").attr('id', 'confirmation').addClass('input animated zoomIn').appendTo('#login');
+        $("<input/>").attr('id', 'txtEmail').attr('placeholder', 'Enter an email').addClass('login_input').appendTo('#email');
+        $("<input/>").attr('id', 'txtPassword').attr('placeholder', 'Enter a password').addClass('login_input').appendTo('#password');
+        $("<input/>").attr('id', 'txtPasswordConfirm').attr('placeholder', 'Confirm password').addClass('login_input').appendTo('#confirmation');
+        $("<button> SignUp </button>").attr({type: 'button', id: 'btnSignUp'}).addClass('btn animated zoomIn').appendTo('#confirmation');
+
      })
+
     } else if(companyName === undefined){
         alert('You are not part of a company on LinkedIn.')
     } else {
-      companyArray += companyName;
+    $(function() {
+        $('.login-form').removeClass('hide-login')
+        $("<div/>").attr('id', 'email').addClass('input animated zoomIn').appendTo('#login');
+        $("<div/>").attr('id', 'password').addClass('input animated zoomIn').appendTo('#login');
+        $("<div/>").attr('id', 'confirmation').addClass('input animated zoomIn').appendTo('#login');
+        $("<input/>").attr('id', 'txtEmail').attr('placeholder', 'Enter an email').addClass('login_input').appendTo('#email');
+        $("<input/>").attr('id', 'txtPassword').attr('placeholder', 'Enter a password').addClass('login_input').appendTo('#password');
+        $("<input/>").attr('id', 'txtPasswordConfirm').attr('placeholder', 'Confirm password').addClass('login_input').appendTo('#confirmation');
+        $("<button> SignUp </button>").attr({type: 'button', id: 'btnSignUp'}).addClass('btn animated zoomIn').appendTo('#confirmation');
+     })
+        companyArray += companyName;
+
       }
  }
