@@ -11,9 +11,18 @@ body,
 }
 
 .linkedin {
+    position: absolute;
     display: block;
-    margin-left:50%;
+    margin-left:8%;
+    z-index: 9999;
+    animation-delay: 0.8s;
 }
+
+
+.linkedinDisplay {
+    display:none;
+}
+
 @keyframes Gradient {
     0% {
         background-position: 0% 50%
@@ -494,7 +503,10 @@ textarea {
     height: 60%;
     border: none;
     animation-delay: 0.10s;
+    background-color: white;
+    color:black;
 }
+
 
 .message-input .message-form .form-control::-webkit-scrollbar-track {
     -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
@@ -647,6 +659,7 @@ input:checked + .slider:before {
     width: 100%;
     height: 100%;
     font-family: 'Lato', sans-serif;
+    /*z-index: -1;*/
     background-color: #4b9ec1;
     /*background: linear-gradient(-45deg, #4b9ec1, #8c85d1, #23A6D5, #23D5AB);
     background-size: 400% 400%;

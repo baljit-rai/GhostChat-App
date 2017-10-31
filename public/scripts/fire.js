@@ -36,7 +36,7 @@
   });
 
   // Add signup event
-  btnSignUp.addEventListener('click', event => {
+ /* btnSignUp.addEventListener('click', event => {
     console.log('click');
     // Get email and password
     // TODO: Check 4 real email
@@ -52,7 +52,7 @@
   // Add logout event
   btnLogout.addEventListener('click', event => {
     firebase.auth().signOut();
-  })
+  })*/
 
   //Add a realtime listner
   firebase.auth().onAuthStateChanged(firebaseUser => {

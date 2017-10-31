@@ -3,6 +3,7 @@ import io from 'socket.io-client'
 import {USER_CONNECTED, LOGOUT } from '../Events'
 import LoginForm from './LoginForm'
 import ChatContainer from './chats/ChatContainer'
+import firebase from 'firebase';
 
 const socketUrl = "http://localhost:3001"
 
@@ -10,6 +11,17 @@ export default class Layout extends Component {
 
   constructor(props) {
     super(props);
+    var config = {
+     apiKey: "AIzaSyA1LeSMzIAdNE3WHeLi73zX4BEf1yp8PkU",
+     authDomain: "ghost-84d4d.firebaseapp.com",
+     databaseURL: "https://ghost-84d4d.firebaseio.com",
+     projectId: "ghost-84d4d",
+     storageBucket: "ghost-84d4d.appspot.com",
+     messagingSenderId: "473083667760"
+   };
+    if (!firebase.apps.length) {
+    this.app = firebase.initializeApp(config);
+    }
 
     this.state = {
       socket: null,
@@ -43,6 +55,8 @@ export default class Layout extends Component {
   //** Sets the user property in state to null
 
   logout = ()=>{
+
+    firebase.auth().signOut();
     const { socket } = this.state
     socket.emit(LOGOUT)
     this.setState({user:null})
