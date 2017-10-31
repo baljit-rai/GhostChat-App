@@ -54,27 +54,11 @@ export default class LoginForm extends Component {
    promise.catch(event => console.log(event.message));
  });
 
-/* // Add signup event
- btnSignUp.addEventListener('click', event => {
-   console.log('click');
-   // Get email and password
-   // TODO: Check 4 real email
-   const email = txtEmail.value;
-   const password = txtPassword.value;
-   const confirm = txtPasswordConfirm.value;
-   const auth = firebase.auth();
-
-   //Sign Up
-   const promise = auth.createUserWithEmailAndPassword(email, password);
-   promise.catch(event => console.log(event.message));
- });*/
-
-
  firebase.auth().onAuthStateChanged(firebaseUser => {
    if(firebaseUser) {
     const { socket } = this.props
     const { nickname } = this.state
-    socket.emit(VERIFY_USER, nickname, this.setUser)
+      socket.emit(VERIFY_USER, nickname, this.setUser)
    } else {
      console.log('not logged in')
    }
@@ -97,29 +81,6 @@ export default class LoginForm extends Component {
 
   signUpClick() {
     this.setState({visible:false})
-
-   /*const txtEmail = document.getElementById('txtEmail')
-   const txtPassword = document.getElementById('txtPassword')
-   const txtPasswordConfirm = document.getElementById('txtPasswordConfirm')
-   const btnLogin = document.getElementById('btnLogin')
-   const btnSignUp = document.getElementById('btnSignUp')
-   const btnLogout= document.getElementById('btnLogout')
-
-   setTimeout(() => {
-   btnSignUp.addEventListener('click', event => {
-     // Get email and password
-     const email = txtEmail.value;
-     const password = txtPassword.value;
-     const confirm = txtPasswordConfirm.value;
-     const auth = firebase.auth();
-
-     //Sign Up
-     const promise = auth.createUserWithEmailAndPassword(email, password);
-     promise.catch(event => console.log(event.message));
-      }, 2000);
-
-  });*/
-
   }
 
   render() {
@@ -134,7 +95,15 @@ export default class LoginForm extends Component {
             <form>
             <div className={this.state.visible ? this.state.class.username : 'input animated zoomOut'}>
                 <img src={icon} />
-                <input ref={(input) => { this.textInput = input }} onChange={this.handleChange} id="txtEmail" className="login_input" autoComplete="off" type="text" name="username" placeholder="Username" />
+                <input ref={(input) => { this.textInput = input }} onChange={this.handleChange} id="txtUsername" className="login_input" autoComplete="off" type="text" name="username" placeholder="Username" />
+
+            </div>
+            </form>
+            <form>
+            <div className={this.state.visible ? this.state.class.username : 'input animated zoomOut'}>
+
+                <img src={lock} />
+                <input id="txtEmail" className="login_input" autoComplete="off" type="text" name="email" placeholder="Email" />
 
             </div>
             </form>
