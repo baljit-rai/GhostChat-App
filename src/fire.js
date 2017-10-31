@@ -20,31 +20,6 @@
  const btnLogout= document.getElementById('btnLogout')
 
  //Add Login event
- btnLogin.addEventListener('click', event => {
-   //Get email and password
-   const email = txtEmail.value;
-   const password = txtPassword.value;
-   const confirm = txtPasswordConfirm.value;
-   const auth = firebase.auth();
-
-   //Sign In
-   const promise = auth.signInWithEmailAndPassword(email,password);
-   promise.catch(event => console.log(event.message));
- });
-
- // Add signup event
- btnSignUp.addEventListener('click', event => {
-   console.log('click');
-   // Get email and password
-   // TODO: Check 4 real email
-   const email = txtEmail.value
-   const password = txtPassword.value;
-   const auth = firebase.auth();
-
-   //Sign Up
-   const promise = auth.createUserWithEmailAndPassword(email, password);
-   promise.catch(event => console.log(event.message));
- });
 
  // Add logout event
  btnLogout.addEventListener('click', event => {

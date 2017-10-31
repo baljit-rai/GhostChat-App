@@ -63,24 +63,25 @@ export default class LoginForm extends Component {
                 <img src={ghost} />
             </div>
 
-            <form onSubmit={this.handleSubmit}>
-            <div ref={(input) => { this.textInput = input }} onChange={this.handleChange} id="txtEmail" className={this.state.visible ? this.state.class.username : 'input animated zoomOut'}>
+            <form>
+            <div className={this.state.visible ? this.state.class.username : 'input animated zoomOut'}>
                 <img src={icon} />
-                <input className="login_input" autoComplete="off" type="text" name="username" placeholder="Username" />
+                <input ref={(input) => { this.textInput = input }} onChange={this.handleChange} id="txtEmail" className="login_input" autoComplete="off" type="text" name="username" placeholder="Username" />
 
             </div>
 
-            <div id="txtPassword" className={this.state.visible ? this.state.class.password : 'input input2 animated zoomOut'}>
+            <div className={this.state.visible ? this.state.class.password : 'input input2 animated zoomOut'}>
 
                 <img src={lock} />
-                <input className="login_input" autoComplete="off" type="password" name="username" placeholder="Password" />
+                <input id="txtPassword" className="login_input" autoComplete="off" type="password" name="username" placeholder="Password" />
 
             </div>
-
-            <div className="error">{error ? error:null}</div>
             </form>
-            <button type="button" id="btnLogin" className={this.state.visible ? this.state.class.button : 'btn animated zoomOut'}>Sign in
+            <div className="error">{error ? error:null}</div>
+
+            <button onClick={this.handleSubmit} type="button" id="btnLogout" className={this.state.visible ? this.state.class.button : 'btn animated zoomOut'}>Sign in
             </button>
+
             <div id="loading" className={this.state.class.loading}>
                 <div className="dot1"></div>
                 <div className="dot2"></div>
