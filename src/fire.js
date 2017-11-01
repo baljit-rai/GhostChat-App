@@ -29,7 +29,6 @@
   //Add a realtime listner
   firebase.auth().onAuthStateChanged(firebaseUser => {
     if(firebaseUser) {
-      console.log(firebaseUser);
       btnLogout.classList.remove('hide');
     } else {
       console.log('not logged in')

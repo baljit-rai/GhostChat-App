@@ -28,8 +28,6 @@
     const password = txtPassword.value;
     const auth = firebase.auth();
 
-    console.log(email)
-    console.log(password)
     //Sign In
     const promise = auth.signInWithEmailAndPassword(email,password);
     promise.catch(event => console.log(event.message));
