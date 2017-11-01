@@ -1,4 +1,11 @@
 $(function() {
+  window.setTimeout(function() {
+      $("#email").remove();
+      $("#password").remove()
+      $("#confirmation").remove()
+      $("#btnSignUp").remove()
+ }, 1000);
+
       $("#signup").click(function() {
          window.setTimeout(function() {
           $(".input").remove()
@@ -22,6 +29,7 @@ $( "#login" ).on( "click", "#btnSignUp", function() {
    //Sign Up
    const promise = auth.createUserWithEmailAndPassword(email, password);
    promise.catch(event => console.log(event.message));
+
    //Refreshes page after delay to allow time for registration to DB
     window.setTimeout(function() {
    location.reload();

@@ -20,7 +20,8 @@ export default class LoginForm extends Component {
               loading: "loading",
               account: "account animated zoomIn",
               linkedin:"linkedin linkedinDisplay"},
-      visible: true
+      visible: true,
+      login:false
     };
   }
 
@@ -81,10 +82,12 @@ export default class LoginForm extends Component {
 
   signUpClick() {
     this.setState({visible:false})
+    this.setState({login:true})
   }
 
   render() {
     const { nickname, error } = this.state
+
     return (
         <div id="container">
         <div id="login" className={this.state.class.login}>
@@ -126,6 +129,7 @@ export default class LoginForm extends Component {
             <div id="account" className={this.state.visible ? this.state.class.account : "account animated fadeOutDown"}><span>Don't have an account? <a onClick={(e) => this.signUpClick(e)} id="signup" href="#">Sign up</a></span></div>
         </div>
     </div>
+
 
     );
   }
