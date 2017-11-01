@@ -5,7 +5,7 @@ body,
     padding: 0;
     font-family: 'Lato',sans-serif;
     height: 100%;
-    /*background: linear-gradient(-45deg, #4b9ec1, #8c85d1, #23A6D5, #23D5AB);
+/*    background: linear-gradient(-45deg, #4b9ec1, #8c85d1, #23A6D5, #23D5AB);
     background-size: 400% 400%;
     animation: Gradient 15s ease infinite;*/
 }
@@ -72,7 +72,7 @@ textarea {
     height: 20px;
     line-height: 20px;
     font-size: 20px;
-    border-bottom: solid 2px #b3b2ca;
+    border-bottom: solid 2px #000000;
     transition: all .23s ease-in
 }
 
@@ -373,8 +373,8 @@ textarea {
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    color: #b3b2ca;
-    background: white;
+    color: #000000;
+    background: #8ddbf9d1;
     opacity:1;
     transition-duration: 1.3s;
 }
@@ -408,7 +408,7 @@ textarea {
     border-radius: 5px;
     border-top-left-radius: 0;
     box-sizing: border-box;
-    color: #b3b2ca;
+    color: #000000;
     height: 100%;
     padding: 10px 15px;
     position: relative
@@ -732,6 +732,9 @@ background-position: center;*/
 
 .login_input {
     margin-left: 2%;
+    margin-top: 11%;
+    font-size: 0.9em;
+
 }
 
 input,
