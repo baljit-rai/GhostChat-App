@@ -22,9 +22,10 @@ $( "#login" ).on( "click", "#btnSignUp", function() {
    //Sign Up
    const promise = auth.createUserWithEmailAndPassword(email, password);
    promise.catch(event => console.log(event.message));
-
+   //Refreshes page after delay to allow time for registration to DB
+    window.setTimeout(function() {
    location.reload();
-
+     }, 800);
     })
 
   });
