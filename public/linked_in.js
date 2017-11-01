@@ -37,8 +37,8 @@ function ShowProfileData(profiles) {
         $("<div/>").attr('id', 'password').addClass('input animated zoomIn').appendTo('#login');
         $("<div/>").attr('id', 'confirmation').addClass('input animated zoomIn').appendTo('#login');
         $("<input/>").attr('id', 'txtEmail').attr('placeholder', 'Enter an email').addClass('login_input').appendTo('#email');
-        $("<input/>").attr('id', 'txtPassword').attr('placeholder', 'Enter a password').addClass('login_input').appendTo('#password');
-        $("<input/>").attr('id', 'txtPasswordConfirm').attr('placeholder', 'Confirm password').addClass('login_input').appendTo('#confirmation');
+        $("<input/>").attr('type', 'password').attr('id', 'txtPassword').attr('placeholder', 'Enter a password').addClass('login_input').appendTo('#password');
+        $("<input/>").attr('type', 'password').attr('id', 'txtPasswordConfirm').attr('placeholder', 'Confirm password').addClass('login_input').appendTo('#confirmation');
         $("<button> SignUp </button>").attr({type: 'button', id: 'btnSignUp'}).addClass('btn animated zoomIn').appendTo('#confirmation');
 
      })
@@ -52,8 +52,8 @@ function ShowProfileData(profiles) {
         $("<div/>").attr('id', 'password').addClass('input animated zoomIn').appendTo('#login');
         $("<div/>").attr('id', 'confirmation').addClass('input animated zoomIn').appendTo('#login');
         $("<input/>").attr('id', 'txtEmail').attr('placeholder', 'Enter an email').addClass('login_input').appendTo('#email');
-        $("<input/>").attr('id', 'txtPassword').attr('placeholder', 'Enter a password').addClass('login_input').appendTo('#password');
-        $("<input/>").attr('id', 'txtPasswordConfirm').attr('placeholder', 'Confirm password').addClass('login_input').appendTo('#confirmation');
+        $("<input/>").attr('type', 'password').attr('id', 'txtPassword').attr('placeholder', 'Enter a password').addClass('login_input').appendTo('#password');
+        $("<input/>").attr('type', 'password').attr('id', 'txtPasswordConfirm').attr('placeholder', 'Confirm password').addClass('login_input').appendTo('#confirmation');
         $("<button> SignUp </button>").attr({type: 'button', id: 'btnSignUp'}).addClass('btn animated zoomIn').appendTo('#confirmation');
      })
         companyArray += companyName;
