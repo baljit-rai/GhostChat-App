@@ -39,7 +39,7 @@ function ShowProfileData(profiles) {
         $("<input/>").attr('id', 'txtEmail').attr('placeholder', 'Enter an email').addClass('login_input').appendTo('#email');
         $("<input/>").attr('type', 'password').attr('id', 'txtPassword').attr('placeholder', 'Enter a password').addClass('login_input').appendTo('#password');
         $("<input/>").attr('type', 'password').attr('id', 'txtPasswordConfirm').attr('placeholder', 'Confirm password').addClass('login_input').appendTo('#confirmation');
-        $("<button> SignUp </button>").attr({type: 'button', id: 'btnSignUp'}).addClass('btn animated zoomIn').appendTo('#confirmation');
+        $("<button> Sign Up </button>").attr({type: 'button', id: 'btnSignUp'}).addClass('btn animated zoomIn').appendTo('#login');
 
      })
 
@@ -54,7 +54,7 @@ function ShowProfileData(profiles) {
         $("<input/>").attr('id', 'txtEmail').attr('placeholder', 'Enter an email').addClass('login_input').appendTo('#email');
         $("<input/>").attr('type', 'password').attr('id', 'txtPassword').attr('placeholder', 'Enter a password').addClass('login_input').appendTo('#password');
         $("<input/>").attr('type', 'password').attr('id', 'txtPasswordConfirm').attr('placeholder', 'Confirm password').addClass('login_input').appendTo('#confirmation');
-        $("<button> SignUp </button>").attr({type: 'button', id: 'btnSignUp'}).addClass('btn animated zoomIn').appendTo('#confirmation');
+        $("<button> SignUp </button>").attr({type: 'button', id: 'btnSignUp'}).addClass('btn animated zoomIn').appendTo('#login');
      })
         companyArray += companyName;
 

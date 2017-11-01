@@ -102,7 +102,7 @@ export default class LoginForm extends Component {
             <form>
             <div className={this.state.visible ? this.state.class.username : 'input animated zoomOut'}>
 
-                <img src={lock} />
+                <img src={icon} />
                 <input id="txtEmail" className="login_input" autoComplete="off" type="text" name="email" placeholder="Email" />
 
             </div>
