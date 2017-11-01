@@ -63,6 +63,7 @@ export default class Layout extends Component {
           <ChatContainer socket={socket} user={user} logout={this.logout}/>
         }
       </div>
+      <div id="main"></div>
     );
   }
 }
