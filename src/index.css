@@ -6,6 +6,7 @@ body,
     font-family: 'Lato',sans-serif;
     height: 100%;
     background-color: #ECC7CD;
+    transition-duration: 1.2s;
 /*    background: linear-gradient(-45deg, #4b9ec1, #8c85d1, #23A6D5, #23D5AB);
     background-size: 400% 400%;
     animation: Gradient 15s ease infinite;*/
@@ -663,10 +664,12 @@ input:checked + .slider:before {
     height: 100%;
     font-family: 'Lato', sans-serif;
     /*z-index: -1;*/
-    background-color: #ECC7CD;
-    /*background: linear-gradient(-45deg, #4b9ec1, #8c85d1, #23A6D5, #23D5AB);
-    background-size: 400% 400%;
-    animation: Gradient 15s ease infinite;*/
+    background: linear-gradient(311deg, #c67e8a, #dfa1ab, #f9edef, #ffffff);
+background-size: 400% 400%;
+
+-webkit-animation: MegaPink 12s ease infinite;
+-moz-animation: MegaPink 12s ease infinite;
+animation: MegaPink 12s ease infinite;
 }
 
 #container a {
@@ -771,7 +774,7 @@ input:focus {
 }
 
 .btn:hover {
-    background: #62849e;
+    background: #f9edef;
     text-decoration: none;
     border: none;
     cursor: pointer;
@@ -958,11 +961,25 @@ button:focus {
 }
 
 
+.callout.secondary.postcomments.left_postcomment {
+    transition-duration: 0.9s;
+    background-color: #1b1d21;
+}
 
+#comment {
+    transition-duration: 1.2s;
+    background-color: #303540;
+}
+
+#root.background_color {
+    transition-duration: 1.2s;
+    background-color: white;
+}
 
 
 
 .callout.secondary {
+  transition-duration: 0.9s;
   border-radius: 8px;
   margin: 20px;
   background: #D98E9A;
@@ -975,7 +992,8 @@ button:focus {
   margin-right: 40px;
 }
 
-.comment-list li {
+#comment {
+    transition-duration: 1.2s;
     border-radius: 8px;
     margin: 0 0 20px 0;
     background: #d98e9a;
@@ -1020,4 +1038,24 @@ button:focus {
   margin: 10px
 }
 
+.row {
+    animation-delay: 0.s;
+}
+
+
+@-webkit-keyframes MegaPink {
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+@-moz-keyframes MegaPink {
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+@keyframes MegaPink {
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
 

@@ -17,11 +17,16 @@ export default function({name, numberOfUsers}) {
     const elem6 = document.querySelector('.chat-header');
     const elem7 = document.querySelector('.thread-container .thread');
     const elem8 = document.querySelector('.message-input');
+    const elem9 = document.querySelector('.callout');
+    const elem10 = document.querySelector('#root');
 
 
 
 
-    if (elem && elem.classList.contains('ghost') && elem2.classList.contains('searchColor') && elem3.classList.contains('usersColor') && elem4.classList.contains('activeColor') && elem5.classList.contains('current') && elem6.classList.contains('header') && elem7.classList.contains('thread-body') && elem8.classList.contains('footer')) {
+
+
+
+    if (elem && elem.classList.contains('ghost') && elem2.classList.contains('searchColor') && elem3.classList.contains('usersColor') && elem4.classList.contains('activeColor') && elem5.classList.contains('current') && elem6.classList.contains('header') && elem7.classList.contains('thread-body') && elem8.classList.contains('footer') && elem9.classList.contains('left_postcomment')&& elem10.classList.contains('background_color')) {
       elem.classList.remove('ghost')
       elem2.classList.remove('searchColor')
       elem3.classList.remove('usersColor')
@@ -30,8 +35,8 @@ export default function({name, numberOfUsers}) {
       elem6.classList.remove('header')
       elem7.classList.remove('thread-body')
       elem8.classList.remove('footer')
-
-
+      elem9.classList.remove('left_postcomment')
+      elem10.classList.remove('background_color')
 
     } else {
       elem.classList.add('ghost');
@@ -42,6 +47,8 @@ export default function({name, numberOfUsers}) {
       elem6.classList.add('header')
       elem7.classList.add('thread-body')
       elem8.classList.add('footer')
+      elem9.classList.add('left_postcomment')
+      elem10.classList.add('background_color')
 
     }
   }

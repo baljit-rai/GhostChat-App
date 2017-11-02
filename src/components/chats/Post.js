@@ -25,7 +25,7 @@ export default class Post extends Component {
 
   renderComment(key) {
     return (
-      <li className="">
+      <li id="comment" className="animated slidInDown">
         <NewComment key={key} index={key} details={this.state.comments[key]} />
       </li>
     )
@@ -33,11 +33,11 @@ export default class Post extends Component {
 
   render() {
     return (
-      <div className="row medium-8 large-7 columns">
+      <div className="row medium-8 large-7 columns animated zoomIn">
 
       <AddCommentForm addComment={this.addComment}/>
 
-        <ol className="comment-list block-comments">
+        <ol className="comment-list block-comments ">
             {
               Object
                 .keys(this.state.comments)
