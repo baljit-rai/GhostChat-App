@@ -4,6 +4,7 @@ import {COMMUNITY_CHAT, MESSAGE_SENT, MESSAGE_RECIEVED, TYPING, PRIVATE_MESSAGE}
 import ChatHeading from './ChatHeading'
 import Messages from '../messages/Messages'
 import MessageInput from '../messages/MessageInput'
+import Post from './Post'
 import firebase from 'firebase/app'
 import 'firebase/database';
 
@@ -227,8 +228,11 @@ export default class ChatContainer extends Component {
                 <h3>Choose a chat!</h3>
               </div>
               )
-          }
-        </div>
+            }
+          </div>
+          <div>
+            <Post />
+          </div>
         </div>
     );
   }
