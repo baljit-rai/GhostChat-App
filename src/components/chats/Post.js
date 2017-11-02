@@ -35,6 +35,8 @@ export default class Post extends Component {
     return (
       <div className="row medium-8 large-7 columns">
 
+      <AddCommentForm addComment={this.addComment}/>
+
         <ol className="comment-list block-comments">
             {
               Object
@@ -43,8 +45,6 @@ export default class Post extends Component {
                 .map(this.renderComment)
             }
         </ol>
-
-        <AddCommentForm addComment={this.addComment}/>
 
       </div>
     )}
@@ -107,12 +107,12 @@ class AddCommentForm extends Component {
 
   render () {
     return (
-      <div className="callout secondary">
-        <h4 className="leave-comment">Add a Comment</h4>
+      <div className="callout secondary postcomments">
+        <h4 className="leave-comment">What's on your mind ?</h4>
         <form className="post-edit" ref="commentForm" onSubmit={this.processComment}>
-          <input type="text" name="name" onChange={this.handleNameChange} value={this.state.name} placeholder="Your Name" required/>
-          <textarea name="desc" onChange={this.handleDescChange} value={this.state.desc} placeholder="Add your comment here" required/>
-          <button id="submit" type="submit" className="button button-outline comment-button action-button expand-right">Add Comment</button>
+          <input type="text" name="name" onChange={this.handleNameChange} value={this.state.name} placeholder="Topic" required/>
+          <input type="text" name="desc" onChange={this.handleDescChange} value={this.state.desc} placeholder={"Comment/Question"} required/>
+          <button id="submit" type="submit" className="button button-outline comment-button action-button expand-right">Submit</button>
         </form>
       </div>
     )
